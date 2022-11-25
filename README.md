@@ -13,7 +13,7 @@ It can be cloned and used for selling pfp-avatars or NFT collections.
 
 ## Before deployment
 
-1. Run `yarn install`.
+1. Clone the repo and run `yarn install`.
 2. Specify variables in `.env` file.
 - `PRIVATE_KEY` - the private key of the wallet, that will be the owner of the contract
 - `GOERLI_URL` and `MAINNET_URL` - use [https://infura.io/](https://infura.io/) or [https://www.alchemy.com/](https://www.alchemy.com/) for getting the urls.
@@ -34,6 +34,8 @@ Remember the public key, we will need it further in `signerAddress`.
 6. Go to `test/TheSample.ts`:
 - Replace  `TheSample` with your contract name.
 - Uncomment the code.
+
+Do not upload `.env` file with sensitive data to your repo, add it to `.gitignore`.
 
 ## How to test?
 
@@ -69,3 +71,34 @@ For Goerli network it can look like this:
 ```
 npx hardhat verify --network goerli 0xc191B6505B16EBe5D776fb30EFbfe41A9252023a  "https://my-domain.com/collection/metadata/" "TheSample name" "TheSampleSymbol"
 ```
+
+## Available tasks
+
+- Deploy the contract
+
+```
+npx hardhat deploy:Contract
+```
+
+- Start the sale
+
+```
+npx hardhat start:sale --contract <DEPLOYED_CONTRACT_ADDRESS>
+```
+
+- Stop the sale
+
+```
+npx hardhat stop:sale --contract <DEPLOYED_CONTRACT_ADDRESS>
+```
+
+- Set base URI of the token
+
+```
+npx hardhat setBaseUri --contract <DEPLOYED_CONTRACT_ADDRESS> --uri <Base_URI>
+```
+
+## Useful links
+
+- [Create, deploy and mint smart contract (ERC-721) with NodeJS + Hardhat + Walletconnect + Web3modal](https://dev.to/igaponov/create-deploy-and-mint-smart-contract-erc-721-with-nodejs-hardhat-walletconnect-web3modal-59o8)
+- [How to Implement a Whitelist in Smart Contracts (ERC-721 NFT, ERC-1155, and others)](https://www.freecodecamp.org/news/how-to-implement-whitelist-in-smartcontracts-erc-721-nft-erc-1155-and-others/)
