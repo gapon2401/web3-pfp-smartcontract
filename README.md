@@ -24,7 +24,8 @@ Remember the public key, we will need it further in `signerAddress`.
 - `REPORT_GAS` - are we going to use gas reporter or not.
 3. Go to `contracts/TheSample`:
 - Change contract name.
-- Replace `signerAddress` with the public key of the wallet, that will make digital signatures.
+- Replace `signerAddress` with the public key of the wallet, that will make digital signatures. Remember about `SIGNER_PRIVATE_KEY`? Use it's public key here.
+- Replace `PROVENANCE` constant.
 - Make other changes you need.
 4. Run `npx hardhat compile`.
 5. Go to `tasks/contract.ts`:
@@ -66,6 +67,8 @@ In general verify function looks like this:
 npx hardhat verify --network <YOUR_NETWORK> <DEPLOYED_CONTRACT_ADDRESS> <arg1> <arg2> <argn>
 ```
 
+`<YOUR_NETWORK>` can be taken from `hardhat.config.ts`. Now it can be `goerli` or `mainnet`.
+
 For Goerli network it can look like this:
 
 ```
@@ -77,7 +80,7 @@ npx hardhat verify --network goerli 0xc191B6505B16EBe5D776fb30EFbfe41A9252023a  
 - Deploy the contract
 
 ```
-npx hardhat deploy:Contract
+npx hardhat deploy:Contract --network <YOUR_NETWORK>
 ```
 
 - Start the sale
